@@ -2,7 +2,7 @@
 
 require_once "connect.php";
 try {
-    $sql = 'select * from RichestPeople';
+    $sql = 'select * from RichestPeople order by Networth DESC';
     $q = $pdo->query($sql);
     $q->setFetchMode(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -36,12 +36,11 @@ try {
             <?php while ($row = $q->fetch()) : ?>
                 <tr>
                     <td><?php echo htmlspecialchars($row['Naam']); ?></td>
-
                     <td><?php echo htmlspecialchars($row['Networth']); ?></td>
                     <td><?php echo htmlspecialchars($row['Age']); ?></td>
                     <td><?php echo htmlspecialchars($row['MyCompany']); ?></td>
                     <td>
-                        <button class="btn btn-danger"><a href="delete.php?deleteid=<?= $row['Id'] ?>" class="text-light">Delete</a></button>
+                        <a href="delete.php?deleteid=<?= $row['Id'] ?>" class="text-light"><img  src="kruis.png" style="width: 50px;" alt="delete"></a>
                     </td>
                 </tr>
             <?php endwhile; ?>
