@@ -40,7 +40,7 @@ try {
                     <td><?php echo htmlspecialchars($row['Age']); ?></td>
                     <td><?php echo htmlspecialchars($row['MyCompany']); ?></td>
                     <td>
-                        <a href="delete.php?deleteid=<?= $row['Id'] ?>" class="text-light"><img  src="kruis.png" style="width: 50px;" alt="delete"></a>
+                        <a href="delete.php?deleteid=<?= $row['Id'] ?>" class="text-light"><img src="kruis.webp" style="width: 50px;"></a>
                     </td>
                 </tr>
             <?php endwhile; ?>
