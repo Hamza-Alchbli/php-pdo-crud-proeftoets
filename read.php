@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once "connect.php";
 try {
@@ -22,30 +22,31 @@ try {
 </head>
 
 <body>
-<table class="table table-bordered table-condensed">
-            <thead>
+    <table class="table table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>Naam</th>
+                <th>Vermogen</th>
+                <th>Leeftijd</th>
+                <th>Bedrijf</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while ($row = $q->fetch()) : ?>
                 <tr>
-                    <th>Id</th>
-                    <th>Naam</th>
-                    <th>Tussenvoegsel</th>
-                    <th>Achternaam</th>
+                    <td><?php echo htmlspecialchars($row['Naam']); ?></td>
+
+                    <td><?php echo htmlspecialchars($row['Networth']); ?></td>
+                    <td><?php echo htmlspecialchars($row['Age']); ?></td>
+                    <td><?php echo htmlspecialchars($row['MyCompany']); ?></td>
+                    <td>
+                        <button class="btn btn-danger"><a href="delete.php?deleteid=<?= $row['Id'] ?>" class="text-light">Delete</a></button>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                <?php while ($row = $q->fetch()) : ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($row['Id']) ?></td>
-                        <td><?php echo htmlspecialchars($row['Naam']); ?></td>
-                        <td><?php echo htmlspecialchars($row['Tussenvoegsel']); ?></td>
-                        <td><?php echo htmlspecialchars($row['Achternaam']); ?></td>
-                        <td>
-                            <button class="btn btn-primary"><a href="updateForm.php?updateid=<?= $row['Id'] ?>" class="text-light">Update</a></button>
-                            <button class="btn btn-danger"><a href="delete.php?deleteid=<?= $row['Id'] ?>"   class="text-light">Delete</a></button>
-                        </td>
-                    </tr>
-                <?php endwhile; ?>
-            </tbody>    
-        </table>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
 </body>
 
 </html>
